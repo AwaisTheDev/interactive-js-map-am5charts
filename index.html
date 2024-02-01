@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="worldMapDiv"></div>
+    <!-- Styles -->
+    <style>
+        #worldMapDiv {
+            width: 100%;
+            aspect-ratio: 2/1;
+        }
+    </style>
+
+    <!-- Resources -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+    <!-- Chart code -->
+    <!-- Chart code -->
+    <script>
+        am5.ready(function () {
+
+            // chart data
+            var groupData = [
+                {
+                    "name": "USA",
+                    "data": [
+                        { "id": "US", "name": "USA", 'coin': "USDT", 'link': 'https://tether.to/en/transparency/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4d3773707d3e169674_usa.svg' }
+                    ]
+                },
+                {
+                    "name": "Brazil",
+                    "data": [
+                        { "id": "BR", "name": "Brazil", 'coin': "BRL", 'link': 'https://www.ntokens.com/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc413d8bc8c97fc20_brl.svg' }
+                    ]
+                },
+                {
+                    "name": "Nigeria",
+                    "data": [
+                        { "id": "NG", "name": "Nigeria", 'coin': "NGN", 'link': 'https://www.linkio.africa/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bba9bd04c976423edc8dc1_nigeria.svg' }
+                    ]
+                },
+                {
+                    "name": "Tanzania",
+                    "data": [
+                        { "id": "TZ", "name": "Tanzania", 'coin': "TZS", 'link': 'https://getpaid.africa/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc413d8bc8c97fc30_tzs.svg' }
+                    ]
+                },
+                {
+                    "name": "Australia",
+                    "data": [
+                        { "id": "AU", "name": "Australia", 'coin': "AUDD", 'link': 'https://www.audd.digital/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4db8b8843b60f17f70_audd.svg' }
+                    ]
+                },
+                {
+                    "name": "Eurozone",
+                    "data": [
+                        { "id": "AT", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "BE", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "HR", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "CY", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "EE", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "FI", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "FR", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "DE", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "GR", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "IE", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "IT", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "LV", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "LT", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "LU", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "NL", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "PT", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "SK", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "SI", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                        { "id": "ES", "name": "Eurozone", 'coin': "EURC", 'link': 'https://mykobo.co/', 'icon': 'https://uploads-ssl.webflow.com/626bfa60b493a333f79ff6e3/65bbac4dc1b210084ac76998_eurc.svg' },
+                    ]
+
+                },
+            ];
+
+
+            // Create root and chart
+            var root = am5.Root.new("worldMapDiv");
+
+
+            // Set themes
+            root.setThemes([
+                //am5themes_Animated.new(root)
+            ]);
+
+
+            // Create chart
+            var chart = root.container.children.push(am5map.MapChart.new(root, {
+                homeZoomLevel: 1,
+                projection: am5map.geoEquirectangular(),
+                background: am5.Rectangle.new(root, {
+                    fill: am5.color(0x32253E),
+                    fillOpacity: 1
+                })
+            }));
+
+            chart.chartContainer.wheelable = false;
+
+
+            // Create world polygon series
+            var worldSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+                geoJSON: am5geodata_worldLow,
+                exclude: ["AQ"]
+            }));
+
+            worldSeries.mapPolygons.template.setAll({
+                fill: am5.color(0x5c5669),
+                background: am5.color(0x5c5669),
+                stroke: am5.color(0x32253E)
+            });
+
+            worldSeries.events.on("datavalidated", () => {
+                chart.goHome();
+            });
+
+            //custom tooltip design
+            let ttip = am5.Tooltip.new(root, {
+                getFillFromSprite: false,//reset tooltip
+            });
+
+            ttip.get("background").setAll({
+                fill: 'transparent',
+                stroke: 'transparent',
+            });
+
+
+            am5.array.each(groupData, function (group) {
+                var countries = [];
+
+                am5.array.each(group.data, function (country) {
+                    countries.push(country.id)
+                });
+
+
+                var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+                    geoJSON: am5geodata_worldLow,
+                    include: countries,
+                    name: group.name,
+                    fill: am5.color(0x1DE7DF),
+                    tooltip: ttip,
+                }));
+
+                polygonSeries.mapPolygons.template.setAll({
+                    tooltipHTML: "<img height='30px' src='{icon}'>",
+                    interactive: true,
+                    stroke: am5.color(0x1DE7DF),
+                    strokeWidth: 0,
+                });
+
+                polygonSeries.mapPolygons.template.states.create("hover", {
+                    fill: am5.color(0x1DE7DF),
+                });
+
+                polygonSeries.mapPolygons.template.events.on("pointerover", function (ev) {
+                    document.body.style.cursor = "pointer";
+                });
+
+                polygonSeries.mapPolygons.template.events.on("pointerout", function (ev) {
+                    document.body.style.cursor = "default";
+                });
+
+                polygonSeries.mapPolygons.template.events.on("click", function (ev) {
+                    var clickedCountry = ev.target.dataItem.get("id");
+                    var clickedData = polygonSeries.getDataItemById(clickedCountry);
+                    var pageToOpen = clickedData.dataContext.coin;
+                    var redirectTo = ev.target._dataItem.dataContext.link;
+
+                    window.open(redirectTo, '_blank').focus();
+
+                });
+
+                polygonSeries.data.setAll(group.data);
+
+            });
+
+        }); // end am5.ready()
+    </script>
+
+
+
+</body>
+
+</html>
